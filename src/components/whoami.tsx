@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 
-export default function(){
-
+export default function Whoami({act} : any){
+    return (
+        <div>Hello {act}</div>
+    )
 }

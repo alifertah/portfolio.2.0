@@ -9,11 +9,12 @@ const navs = [
 ]
 
 
-export default function Navbar(){
+export default function Navbar({act, setAct} : any){
     const [activeTab, setActiveTab] = useState()
 
     function activeId(activeTab : any){
-        setActiveTab(activeTab);
+        setAct(activeTab);
+        console.log(act);
         console.log(activeTab);
     }
 
