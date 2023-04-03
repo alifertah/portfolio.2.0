@@ -1,8 +1,10 @@
 import { useState } from "react";
 
 
-export default function Whoami({act} : any){
+export default function Whoami(){
     return (
-        <div>Hello {act}</div>
+       <div>
+        whoAmI
+       </div>
     )
 }

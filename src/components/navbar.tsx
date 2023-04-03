@@ -3,9 +3,9 @@ import Link from "next/link"
 import { useState } from "react"
 
 const navs = [
-    {name: "WHO AM I?", link: "/", id:1},
-    {name: "SKILLS", link: "/", id:2},
-    {name: "PROJECTS", link: "/", id:3},
+    {name: "WHO AM I?", link: "/",value:"whoAmI", id:1},
+    {name: "SKILLS", link: "/", value:"skills", id:2},
+    {name: "PROJECTS", link: "/", value:"projects",id:3},
 ]
 
 
@@ -24,7 +24,7 @@ export default function Navbar({act, setAct} : any){
             <div className="flex justify-between w-[20%]">
             {
                 navs && navs.map((nav, id) => (
-                        <Link key={nav.id} onClick={()=> activeId(nav.name)}  className="hover:text-sky-300 hover:scale-110 duration-300" href={nav.link}>{nav.name}</Link>
+                        <Link key={nav.id} onClick={()=> activeId(nav.value)}  className="hover:text-sky-300 hover:scale-110 duration-300" href={nav.link}>{nav.name}</Link>
                 ))
             }
             </div>
