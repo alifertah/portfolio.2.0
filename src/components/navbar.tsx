@@ -6,6 +6,7 @@ const navs = [
     {name: "WHO AM I?", link: "/",value:"whoAmI", id:1},
     {name: "SKILLS", link: "/", value:"skills", id:2},
     {name: "PROJECTS", link: "/", value:"projects",id:3},
+    {name: "CONTACT", link: "/", value:"contact",id:3},
 ]
 
 
@@ -19,12 +20,11 @@ export default function Navbar({act, setAct} : any){
     }
 
     return(
-        <div  className="text-white sticky top-0 z-10 backdrop-filter backdrop-blur-md flex justify-between items-center py-4 px-3">
-            <h1 className="text-xl font-bold animate-bounce">Ali Fertah</h1>
-            <div className="flex justify-between w-[20%]">
+        <div  className="text-white flex justify-center text-xl">
+            <div className="flex justify-between w-[50%] bg-[#e71d36] py-6 px-6 rounded-t-lg  shadow-[4px_2px_60px_0px_rgba(231,29,54,3)]">
             {
                 navs && navs.map((nav, id) => (
-                        <Link key={nav.id} onClick={()=> activeId(nav.value)}  className="hover:text-sky-300 hover:scale-110 duration-300" href={nav.link}>{nav.name}</Link>
+                        <Link  key={nav.id} onClick={()=> activeId(nav.value)}  className=" hover:text-[#011627] hover:scale-110 duration-300 px-5 mx-5" href={nav.link}>{nav.name}</Link>
                 ))
             }
             </div>
