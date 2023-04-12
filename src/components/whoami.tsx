@@ -3,20 +3,13 @@ import Image from "next/image";
 
 export default function Whoami() {
   return (
-    <div className="w-full flex justify-center items-center text-xl text-white mt-[13%]">
+    <div className="w-full flex justify-center items-center text-center text-xl text-white ">
           <div className="w-[50%]">
-            <h1 className="text-center text-3xl font-bold mb-1">WHO AM I?</h1>
+            <h1 className="text-center text-6xl font-extrabold mb-5">Hello, this is Ali!</h1>
             <p>
             Le Lorem Ipsum est simplement du faux texte employé dans la composition et
             la mise en page avant impression. Le Lorem Ipsum est le faux texte
             standard de l'imprimerie depuis les années 1500, quand un imprimeur
-            anonyme assembla ensemble des morceaux de texte pour réaliser un livre
-            spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles,
-            mais s'est aussi adapté à la bureautique informatique, sans que son
-            contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce
-            à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et,
-            plus récemment, par son inclusion dans des applications de mise en page de
-            texte, comme Aldus PageMaker.
             </p>
           </div>
         </div>

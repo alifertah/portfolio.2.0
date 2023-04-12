@@ -21,7 +21,7 @@ export default function Navbar({act, setAct} : any){
 
     return(
         <div  className="text-white flex justify-center text-xl">
-            <div className="flex justify-between w-[50%] bg-[#e71d36] py-6 px-6 rounded-t-lg  shadow-[4px_2px_60px_0px_rgba(231,29,54,3)]">
+            <div className="flex justify-between  bg-[#e71d36] py-6 px-6 rounded-t-lg  shadow-[4px_2px_60px_0px_rgba(231,29,54,3)]">
             {
                 navs && navs.map((nav, id) => (
                         <Link  key={nav.id} onClick={()=> activeId(nav.value)}  className=" hover:text-[#011627] hover:scale-110 duration-300 px-5 mx-5" href={nav.link}>{nav.name}</Link>
