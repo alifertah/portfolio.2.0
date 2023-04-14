@@ -1,12 +1,14 @@
 import { useState } from "react"
 
-const langs = ["Javascript", "C", "PYTHON"]
+const langs = ["JAVASCRIPT", "TYPESCRIPT", "C", "PYTHON"]
+const frontEnd = ["REACT.JS/NEXT.JS", "TAILWINDCSS", "FRAMEMOTION", "CHARTJS"]
+const tools = ["GIT", "VSCODE", "FIGMA", "GITHUB"]
 const activeSec = "bg-gradient-to-r from-[#e71d36] to-[#011627] cursor-pointer px-8 rounded-2xl py-1"
 const notActiveSec = "cursor-pointer px-8 rounded-2xl py-1"
 
 export default function Skills(){
 
-    const [activeTab, setActiveTab] = useState("Langs")
+    const [activeTab, setActiveTab] = useState("langs")
     const [langsClass, setLangsClass] = useState(activeSec);
     const [frontendClass, setFrontendClass] = useState(notActiveSec);
     const [toolsClass, setToolsClass] = useState(notActiveSec);
@@ -39,13 +41,17 @@ export default function Skills(){
                  <span className={frontendClass} onClick={handleFrontendClick}> Frontend </span>
                  <span className={toolsClass} onClick={handleToolsClick}> Tools </span>
             </div>
-            <div className="">
+            <div className="flex flex-col justify-center font-bold italic text-left mt-5">
                 {
                     activeTab === "langs" ? 
-                        langs.map(lang =>(<div className="font-bold italic text-left">{lang}</div>))
+                        langs.map(lang =>(<div className="">{lang}</div>))
                     : (
-                            activeTab === "frontend" ? ("frontend") : (
-                                activeTab === "tools" ? ("tools") : ('')
+                            activeTab === "frontend" ? (
+                                frontEnd.map(front=>(<div>{front}</div>))
+                            ) : (
+                                activeTab === "tools" ? (
+                                    tools.map(tool=>(<div>{tool}</div>))
+                                ) : ('')
                             )
                     )
                 }
