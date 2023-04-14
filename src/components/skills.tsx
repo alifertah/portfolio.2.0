@@ -41,9 +41,9 @@ export default function Skills(){
             </div>
             <div className="">
                 {
-                    activeTab === "langs" ? (
-                        langs.map(lang =>(<>{lang}</>))
-                    ) : (
+                    activeTab === "langs" ? 
+                        langs.map(lang =>(<div className="font-bold italic text-left">{lang}</div>))
+                    : (
                             activeTab === "frontend" ? ("frontend") : (
                                 activeTab === "tools" ? ("tools") : ('')
                             )
