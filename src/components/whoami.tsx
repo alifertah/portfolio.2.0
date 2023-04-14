@@ -1,17 +1,25 @@
 import Image from "next/image";
 
-
 export default function Whoami() {
   return (
     <div className="w-full flex justify-center items-center">
-          <div className="w-[50%]">
-            <h1 className="text-center text-6xl font-extrabold mb-5">Hello, this is Ali!</h1>
-            <p>
-            Le Lorem Ipsum est simplement du faux texte employé dans la composition et
-            la mise en page avant impression. Le Lorem Ipsum est le faux texte
-            standard de l'imprimerie depuis les années 1500, quand un imprimeur
-            </p>
-          </div>
-        </div>
+      <div className="w-[50%]">
+        <h1 className="text-center text-6xl font-extrabold mb-5">
+          Hello, this is Ali!
+        </h1>
+        <p>
+          As a passionate computer science student and aspiring programmer with
+          over 4 years of experience, I have a knack for quickly picking up new
+          languages and frameworks, although I primarily focus on Javascript. In
+          addition, I'm a keen cyber security enthusiast, constantly learning
+          and exploring new ways to protect digital assets. I have a true love
+          for creating and fixing things, and finding solutions to complex
+          problems. What truly drives me is the satisfaction of knowing that my
+          work has the potential to positively impact someone's life or make a
+          task easier for them. Admittedly, not every project goes as planned,
+          but the thrill of the process always keeps me going!
+        </p>
+      </div>
+    </div>
   );
 }

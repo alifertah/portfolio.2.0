@@ -1,4 +1,5 @@
 import Navbar from "@/components/navbar";
+import Projects from "@/components/projects";
 import Skills from "@/components/skills";
 import Whoami from "@/components/whoami";
 import { useState } from "react";
@@ -15,7 +16,7 @@ export default function Home() {
         ) : act === "whoAmI" ? (
           <Whoami />  
         ) : act === "projects" ? (
-          "projects"
+          <Projects />
         ) : (
           "hadallah"
         )}
