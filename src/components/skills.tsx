@@ -1,6 +1,10 @@
 import { useState } from "react"
+import Image from "next/image"
 
-const langs = ["JAVASCRIPT", "TYPESCRIPT", "C", "PYTHON"]
+const langs = [{name:"JAVASCRIPT", link:"/programmingIcons/javascript.svg"},
+{name:"JAVASCRIPT", link:"/programmingIcons/javascript.svg"}, 
+{name:"JAVASCRIPT", link:"/programmingIcons/javascript.svg"}, 
+{name:"JAVASCRIPT", link:"/programmingIcons/javascript.svg"}, ]
 const frontEnd = ["REACT.JS/NEXT.JS", "TAILWINDCSS", "FRAMEMOTION", "CHARTJS"]
 const tools = ["GIT", "VSCODE", "FIGMA", "GITHUB"]
 const activeSec = "bg-gradient-to-r from-[#e71d36] to-[#011627] cursor-pointer px-8 rounded-2xl py-1"
@@ -41,16 +45,21 @@ export default function Skills(){
                  <span className={frontendClass} onClick={handleFrontendClick}> Frontend </span>
                  <span className={toolsClass} onClick={handleToolsClick}> Tools </span>
             </div>
-            <div className="flex flex-col justify-center font-bold italic text-left mt-5">
+            <div className="flex flex-col justify-center  font-bold italic text-left mt-5">
                 {
                     activeTab === "langs" ? 
-                        langs.map(lang =>(<div className="">{lang}</div>))
+                        langs.map(lang =>(<div className="flex justify-between items-center">
+                            <div className="flex items-center">
+                                {lang.name}
+                            </div>
+                            <Image src={lang.link} height="45" width="45" />
+                            </div>))
                     : (
                             activeTab === "frontend" ? (
-                                frontEnd.map(front=>(<div>{front}</div>))
+                                frontEnd.map(front=>(<div>{front.name}</div>))
                             ) : (
                                 activeTab === "tools" ? (
-                                    tools.map(tool=>(<div>{tool}</div>))
+                                    tools.map(tool=>(<div>{tool.name}</div>))
                                 ) : ('')
                             )
                     )
