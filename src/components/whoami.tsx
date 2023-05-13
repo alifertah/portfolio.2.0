@@ -1,7 +1,22 @@
 import Image from "next/image";
+import { motion } from 'framer-motion'
+
+const LeftoToRight = ({ children }) =>(
+  <motion.div
+    initial={{x:-100, opacity:0}}
+    animate={{x:0, opacity:1}}
+    transition={{duration:.2}}
+  >
+{children}
+  </motion.div>
+)
+
+
 
 export default function Whoami() {
   return (
+    <LeftoToRight>
+
     <div className="w-full flex justify-center items-center">
       <div className="w-[50%]">
         <h1 className="text-center text-6xl font-extrabold mb-5">
@@ -21,5 +36,6 @@ export default function Whoami() {
         </p>
       </div>
     </div>
+    </LeftoToRight>
   );
 }

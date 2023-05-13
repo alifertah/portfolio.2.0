@@ -23,7 +23,7 @@ export default function Projects() {
   };
 
   return (
-    <div className='flex'>
+    <div className='flex justify-between'>
       <Image className='cursor-pointer' onClick={handleLeftClick} src="/angle-left.svg" width={40} height={40}/>
       <div>
         <h1>alifertah's Repositories:</h1>
