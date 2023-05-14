@@ -47,7 +47,7 @@ export default function Skills(){
         setFrontendClass(notActiveSec);
         setToolsClass(activeSec);
       }
-
+      const items = activeTab === "frontend" ? (frontEnd) : activeTab === "langs" ? (langs) : activeTab === "tools" ? (tools) : (frontEnd);
     return(
         <div className="">
             <div className="flex justify-between w-full">
@@ -57,32 +57,12 @@ export default function Skills(){
             </div>
             <div className="flex flex-col justify-center  font-bold italic text-left mt-5">
                 {
-                    activeTab === "langs" ? 
-                        langs.map(lang =>(<div className="flex justify-between items-center mt-2">
-                            <div className="flex items-center">
-                                {lang.name}
+                        items.map((item, key) =>(<div key={key} className="flex justify-between items-center mt-2">
+                            <div  className="flex items-center">
+                                {item.name}
                             </div>
-                                <Image className="rounded" src={lang.link} height="40" width="40" />
+                                <Image className="rounded" src={item.link} height="40" width="40" />
                             </div>))
-                    : (
-                            activeTab === "frontend" ? (
-                                frontEnd.map(front=>(<div className="flex justify-between items-center mt-2">
-                                <div className="flex items-center">
-                                    {front.name}
-                                </div>
-                                    <Image className="rounded" src={front.link} height="40" width="40" />
-                                </div>))
-                            ) : (
-                                activeTab === "tools" ? (
-                                    tools.map(tool=>((<div className="flex justify-between items-center mt-2">
-                                    <div className="flex items-center">
-                                        {tool.name}
-                                    </div>
-                                        <Image className="rounded" src={tool.link} height="40" width="40" />
-                                    </div>)))
-                                ) : ('')
-                            )
-                    )
                 }
             </div>
         </div>
