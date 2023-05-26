@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { motion } from 'framer-motion'
 import Image from "next/image"
 
 const langs = [{name:"JAVASCRIPT", link:"/programmingIcons/javascript.svg"},
@@ -55,7 +56,11 @@ export default function Skills(){
                  <span className={frontendClass} onClick={handleFrontendClick}> Frontend </span>
                  <span className={toolsClass} onClick={handleToolsClick}> Tools </span>
             </div>
-            <div className="flex flex-col justify-center  font-bold italic text-left mt-5">
+            <motion.div
+            initial={{x:-400, opacity:0}}
+            animate={{x:0, opacity:1}}
+            
+            className="flex flex-col justify-center  font-bold italic text-left mt-5">
                 {
                         items.map((item, key) =>(<div key={key} className="flex justify-between items-center mt-2">
                             <div  className="flex items-center">
@@ -64,7 +69,7 @@ export default function Skills(){
                                 <Image className="rounded" src={item.link} height="40" width="40" />
                             </div>))
                 }
-            </div>
+            </motion.div>
         </div>
     )
 }
