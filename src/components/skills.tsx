@@ -49,27 +49,40 @@ export default function Skills(){
         setToolsClass(activeSec);
       }
       const items = activeTab === "frontend" ? (frontEnd) : activeTab === "langs" ? (langs) : activeTab === "tools" ? (tools) : (frontEnd);
-    return(
+    
+      const LeftToRight = ( {children} )=>{
+        return(
+            <motion.div
+            initial={{x:-400, opacity:0}}
+            animate={{x:0, opacity:1}}
+            transition={{duration:.5}}
+            >
+            {children}
+            </motion.div>
+            )
+    
+    }
+
+      return(
         <div className="">
             <div className="flex justify-between w-full">
                  <span className={langsClass} onClick={handleLangsClick}> Langs </span>
                  <span className={frontendClass} onClick={handleFrontendClick}> Frontend </span>
                  <span className={toolsClass} onClick={handleToolsClick}> Tools </span>
             </div>
-            <motion.div
-            initial={{x:-400, opacity:0}}
-            animate={{x:0, opacity:1}}
-            
+            <LeftToRight>
+            <div
             className="flex flex-col justify-center  font-bold italic text-left mt-5">
                 {
-                        items.map((item, key) =>(<div key={key} className="flex justify-between items-center mt-2">
+                    items.map((item, key) =>(<div key={key} className="flex justify-between items-center mt-2">
                             <div  className="flex items-center">
                                 {item.name}
                             </div>
                                 <Image className="rounded" src={item.link} height="40" width="40" />
                             </div>))
                 }
-            </motion.div>
+            </div>
+                </LeftToRight>
         </div>
     )
 }
