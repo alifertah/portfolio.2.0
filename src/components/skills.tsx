@@ -50,12 +50,12 @@ export default function Skills(){
       }
       const items = activeTab === "frontend" ? (frontEnd) : activeTab === "langs" ? (langs) : activeTab === "tools" ? (tools) : (frontEnd);
     
-      const LeftToRight = ( {children} )=>{
+      const LeftToRight = ( {children, _duration} )=>{
         return(
             <motion.div
             initial={{x:-400, opacity:0}}
             animate={{x:0, opacity:1}}
-            transition={{duration:.5}}
+            transition={{duration:_duration*.175}}
             >
             {children}
             </motion.div>
@@ -70,19 +70,22 @@ export default function Skills(){
                  <span className={frontendClass} onClick={handleFrontendClick}> Frontend </span>
                  <span className={toolsClass} onClick={handleToolsClick}> Tools </span>
             </div>
-            <LeftToRight>
             <div
             className="flex flex-col justify-center  font-bold italic text-left mt-5">
                 {
-                    items.map((item, key) =>(<div key={key} className="flex justify-between items-center mt-2">
+                  items.map((item, key) =>(
+                      <LeftToRight _duration={key}>
+                    
+                    <div key={key} className="flex justify-between items-center mt-2">
                             <div  className="flex items-center">
                                 {item.name}
                             </div>
                                 <Image className="rounded" src={item.link} height="40" width="40" />
-                            </div>))
+                            </div>
+                </LeftToRight>
+                            ))
                 }
             </div>
-                </LeftToRight>
         </div>
     )
 }
