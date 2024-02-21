@@ -6,14 +6,14 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "test",
+      name: "testasdfasf",
       link: "#",
       description: "description"
     },
     {
       name: "test1",
       link: "#",
-      description: "description1"
+      desc: "description1"
     },
   ]
 
@@ -26,13 +26,23 @@ export default function Projects() {
   };
 
   return (
-    <div className='flex justify-between'>
+    <div className='w-full'>
+      <div className="flex w-[60%] items-center flex-row py-12">
       <Image alt="" className='cursor-pointer' onClick={handleLeftClick} src="/angle-left.svg" width={40} height={40}/>
-      <div>
-        <h1>{projects[currentIndex].name}</h1>
-        <p>Project name</p>
-      </div>
+          <div className="w-[70%]">
+          <p className="text-xl tracking-wide leading-relaxed mr-4">
+            {projects[currentIndex].desc}
+          </p>
+          </div>
+          <div className="flex justify-around items-center ml-4 py-4 w-[40%] rounded-lg shadow-[4px_15px_40px_10px_rgba(0,128,128,3)] cursor-pointer shadow-xl bg-sky-500 hover:bg-sky-700 duration-1000 ">
+              <p>{projects[currentIndex].name}</p>
+              <a href={projects[currentIndex].link} className="bg-sky-700 hover:bg-sky-400 duration-1000 p-2 rounded-[50%] " >
+                {/* <AiOutlineLink /> */}
+                go
+              </a>
+          </div>
       <Image alt="" className='cursor-pointer' onClick={handleRightClick} src="/angle-right.svg" width={40} height={40}/>
+        </div>
     </div>
   );
 }

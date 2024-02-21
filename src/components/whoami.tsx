@@ -1,41 +1,48 @@
-import Image from "next/image";
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
-const LeftoToRight = ({ children }) =>(
+const LeftoToRight = ({ children } : any) => (
   <motion.div
-    initial={{x:-100, opacity:0}}
-    animate={{x:0, opacity:1}}
-    transition={{duration:.2}}
+    initial={{ x: -100, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 0.2 }}
   >
-{children}
+    {children}
   </motion.div>
-)
-
-
+);
 
 export default function Whoami() {
+  const [text, setText] = useState('');
+
+  useEffect(() => {
+    const paragraph = `I am web developer student, I am also an aspiring 
+    programmer and have been programming for over 4 years. I can quickly learn new languages
+    and frameworks, but focus mainly on Javascript.
+    I love to build things, fix things, and solve problems. I enjoy it most when I'm working on a problem that 
+    will make someone's life better or easier. Sure, sometimes it doesn't work out, but the journey is always fun!`;
+
+    let index = 0;
+    const interval = setInterval(() => {
+      setText(paragraph.substring(0, index));
+      index++;
+      if (index > paragraph.length) {
+        clearInterval(interval);
+      }
+    }, 10);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <LeftoToRight>
-
-    <div className="w-full flex justify-center items-center">
-      <div className="w-[50%]">
-        <h1 className="text-center text-6xl font-extrabold mb-5">
-          Hello, this is Ali!
-        </h1>
-        <p>
-          As a passionate computer science student and aspiring programmer with
-          over 4 years of experience, I have a knack for quickly picking up new
-          languages and frameworks, although I primarily focus on Javascript. In
-          addition, I'm a keen cyber security enthusiast, constantly learning
-          and exploring new ways to protect digital assets. I have a true love
-          for creating and fixing things, and finding solutions to complex
-          problems. What truly drives me is the satisfaction of knowing that my
-          work has the potential to positively impact someone's life or make a
-          task easier for them. Admittedly, not every project goes as planned,
-          but the thrill of the process always keeps me going!
-        </p>
+      <div className="w-full flex justify-center items-center">
+          <h1 className="text-center text-6xl font-extrabold mb-5 absolute top-40 ">
+            Hello, this is Ali!
+          </h1>
+        <div className="w-[50%]">
+          <p>{text}</p>
+        </div>
       </div>
-    </div>
     </LeftoToRight>
   );
 }
