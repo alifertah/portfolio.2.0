@@ -13,7 +13,7 @@ export default function Projects() {
     {
       name: "test1",
       link: "#",
-      desc: "description1"
+      description: "description1"
     },
   ]
 
@@ -26,22 +26,30 @@ export default function Projects() {
   };
 
   return (
-    <div className='w-full'>
+    <div className='flex justify-center items-center'>
       <div className="flex w-[60%] items-center flex-row py-12">
       <Image alt="" className='cursor-pointer' onClick={handleLeftClick} src="/angle-left.svg" width={40} height={40}/>
-          <div className="w-[70%]">
-          <p className="text-xl tracking-wide leading-relaxed mr-4">
-            {projects[currentIndex].desc}
-          </p>
-          </div>
-          <div className="flex justify-around items-center ml-4 py-4 w-[40%] rounded-lg shadow-[4px_15px_40px_10px_rgba(0,128,128,3)] cursor-pointer shadow-xl bg-sky-500 hover:bg-sky-700 duration-1000 ">
-              <p>{projects[currentIndex].name}</p>
-              <a href={projects[currentIndex].link} className="bg-sky-700 hover:bg-sky-400 duration-1000 p-2 rounded-[50%] " >
-                {/* <AiOutlineLink /> */}
-                go
-              </a>
-          </div>
-      <Image alt="" className='cursor-pointer' onClick={handleRightClick} src="/angle-right.svg" width={40} height={40}/>
+      
+
+<div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <a href="#">
+        <img width={200} height={100} className="rounded-t-lg" src="https://picsum.photos/200" alt="" />
+    </a>
+    <div className="p-5">
+        <a href="#">
+            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{projects[currentIndex].name}</h5>
+        </a>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400"> {projects[currentIndex].description}</p>
+        <a href={projects[currentIndex].link} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            Read more
+             <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+       <Image alt="" className='cursor-pointer' onClick={handleRightClick} src="/angle-right.svg" width={40} height={40}/>
         </div>
     </div>
   );

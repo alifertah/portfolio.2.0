@@ -39,7 +39,7 @@ export default function Whoami() {
           <h1 className="text-center text-6xl font-extrabold mb-5 absolute top-40 ">
             Hello, this is Ali!
           </h1>
-        <div className="w-[50%]">
+        <div className="w-[70%] absolute">
           <p>{text}</p>
         </div>
       </div>
