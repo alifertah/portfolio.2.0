@@ -1,3 +1,4 @@
+import Contact from "@/components/contact";
 import Navbar from "@/components/navbar";
 import Projects from "@/components/projects";
 import Skills from "@/components/skills";
@@ -18,7 +19,7 @@ export default function Home() {
         ) : act === "projects" ? (
           <Projects />
         ) : (
-          "hadallah"
+          <Contact />
         )}
       </div>
       <p>h</p>

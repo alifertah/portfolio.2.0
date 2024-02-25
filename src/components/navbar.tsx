@@ -9,7 +9,7 @@ const navs = [
     {name: "CONTACT", link: "/", value:"contact",id:3},
 ]
 
-const LeftToRight = ( {children} )=>{
+const LeftToRight = ( {children} : any )=>{
     return(
         <motion.div
         initial={{x:-400, opacity:0}}
