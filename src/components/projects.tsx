@@ -6,11 +6,13 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "testasdfasf",
+      image:"/img/yougym.png",
+      name: "Yougym",
       link: "#",
-      description: "description"
+      description: "A website that represents a gym that gives all gym necessary products and services to there costumers"
     },
     {
+      image:"/img/yougym.png",
       name: "test1",
       link: "#",
       description: "description1"
@@ -22,11 +24,16 @@ export default function Projects() {
   };
 
   const handleLeftClick = () => {
-    setCurrentIndex(currentIndex - 1 <= 0 ? projects.length -1 : currentIndex - 1);
+    setCurrentIndex(currentIndex - 1 < 0 ? projects.length - 1 : currentIndex - 1);
   };
 
   return (
-    <div className='flex justify-center items-center w-[80%]'>
+    <div className='flex flex-col justify-center items-center w-[80%]'>
+    <div className='flex flex-col items-center font-bold'>
+      <Image src={projects[currentIndex].image} height={400} width={400} alt=""/>
+      <p>{projects[currentIndex].description}</p>
+    </div>
+
       <div className="flex items-center justify-between flex-row w-[100%]">
         <div onClick={handleLeftClick} className='flex items-center justify-center cursor-pointer'>
           <Image alt="" className='cursor-pointer' src="/angle-left.svg" width={40} height={40}/>
