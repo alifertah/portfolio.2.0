@@ -31,7 +31,7 @@ const HomePage = () => {
 
     return (
         <div className="relative overflow-hidden h-screen">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
                 <motion.div
                     key={currentSection}
                     initial={{ opacity: 0 }}
