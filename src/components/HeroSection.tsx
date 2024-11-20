@@ -1,90 +1,52 @@
+"use client";
+
+import React from "react";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
-const HeroSection = () => {
-    const [dots, setDots] = useState("");
-    const [showMessage, setShowMessage] = useState(false);
-
-    useEffect(() => {
-        // Interval to update dots
-        const dotsInterval = setInterval(() => {
-            setDots((prev) => (prev.length < 3 ? prev + "." : ""));
-        }, 500);
-
-        // Timeout to show the full message
-        const messageTimeout = setTimeout(() => {
-            clearInterval(dotsInterval);
-            setDots(""); // Clear dots when showing the message
-            setShowMessage(true);
-        }, 3000);
-
-        return () => {
-            clearInterval(dotsInterval);
-            clearTimeout(messageTimeout);
-        };
-    }, []);
-
-    return (
-        <motion.div
-            className="h-screen relative flex items-center bg-gradient-hero text-grayLight"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-        >
-            <div className="container mx-auto flex flex-col justify-between md:flex-row items-center px-6 md:px-12 space-y-10 md:space-y-0 md:space-x-12 z-10">
-                {/* Image Section */}
-                <motion.div
-                    className="md:w-1/2 mb-8 md:mb-0"
-                    initial={{ x: -100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1 }}
-                >
-                    <img
-                        src="/img/hero.svg"
-                        alt="Hero"
-                        className="w-full rounded-lg shadow-xl"
-                    />
-                </motion.div>
-
-                {/* Text Section */}
-                <motion.div
-                    className="md:w-1/2 text-center md:text-left"
-                    initial={{ x: 100, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 1 }}
-                >
-                    {!showMessage ? (
-                        <h1 className="text-2xl font-bold">
-                            Initializing<span>{dots}</span>
-                        </h1>
-                    ) : (
-                        <>
-                            <h1 className="text-3xl font-bold">
-                                🤖 Ali Fertah is now online. <br />
-                            </h1>
-                            <p className="text-lg md:text-xl mb-6 text-gray-400">
-                                I am a passionate developer specializing in modern web technologies, creating engaging user experiences, and building impactful digital solutions.
-                            </p>
-                            <a
-                                href="#contact"
-                                className="px-6 py-3 bg-accent hover:bg-indigo-600 text-white font-semibold rounded-lg shadow-lg transition duration-300"
-                            >
-                                Contact Me
-                            </a>
-                        </>
-                    )}
-                </motion.div>
-            </div>
-
-            {/* Positioned Background Image */}
-            <img
-                src="https://www.labrahmi.me/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fnoise.e4d8e2d8.webp&w=3840&q=75"
-                alt="Background Noise"
-                className="absolute bottom-0 left-0 w-full h-auto z-0"
-            />
-        </motion.div>
-    );
+const transition = { duration: 1, ease: [.25,.1,.25,1] };
+const variants = {
+  hidden: { filter: "blur(10px)", transform: "translateY(20%)", opacity: 0 },
+  visible: { filter: "blur(0)", transform: "translateY(0)", opacity: 1 },
 };
 
-export default HeroSection;
+const text = "Ali Fertah aka scofio is online now ";
+
+export default function HeroSection() {
+  const words = text.split(" ");  
+
+  return (
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      transition={{ staggerChildren: 0.04 }}
+      className="my-auto"
+    >
+      <h1 className="mb-6 text-5xl font-semibold md:text-6xl text-white flex items-center justify-center space-x-4">
+        {words.map((word, index) => (
+          <React.Fragment key={index}>
+            <motion.span className="inline-block" transition={transition} variants={variants}>
+              {word}
+            </motion.span>
+            {index < words.length - 1 && ' '}
+            {index === words.length - 1 && <div className="w-[20px] h-[20px] bg-green-600 rounded-full animate-ping"></div> }
+          </React.Fragment>
+        ))}
+      </h1>
+      <motion.p className="text-zinc-400 text-lg mb-8" transition={transition} variants={variants}>
+        Welcome
+      </motion.p>
+      <div className="flex gap-4">
+        <motion.div transition={transition} variants={variants}>
+          <a className="inline-flex justify-center whitespace-nowrap rounded-lg bg-white px-3.5 py-2.5 text-sm font-medium text-zinc-800 hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#0">
+            Start Free Trial
+          </a>
+        </motion.div>
+        <motion.div transition={transition} variants={variants}>
+          <a className="inline-flex justify-center whitespace-nowrap rounded-lg bg-transparent px-3.5 py-2.5 text-sm font-medium text-zinc-400 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#0">
+            Learn More
+          </a>
+        </motion.div>
+      </div>
+    </motion.div>
+  )
+}

@@ -1,49 +1,52 @@
-// pages/index.tsx
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import HeroSection from "@/components/HeroSection";
-import AboutSection from "@/components/AboutSection";
-
-const sections = [HeroSection, AboutSection];
 
 const HomePage = () => {
-    const [currentSection, setCurrentSection] = useState(0);
-
-    const handleScroll = (e: WheelEvent) => {
-        if (e.deltaY > 0) {
-            setCurrentSection((prev) =>
-                prev < sections.length - 1 ? prev + 1 : prev
-            );
-        } else {
-            setCurrentSection((prev) => (prev > 0 ? prev - 1 : prev));
-        }
-    };
+    const [isLoading, setIsLoading] = useState(true);
+    const [heroLoading, setHeroLoading] = useState(true)
 
     useEffect(() => {
-        window.addEventListener("wheel", handleScroll);
+        const timer = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+
+        const heroTimer = setTimeout(()=>{
+            setHeroLoading(false)
+        }, 3000)
 
         return () => {
-            window.removeEventListener("wheel", handleScroll);
+            clearTimeout(timer)
+            clearTimeout(heroTimer)
         };
     }, []);
 
-    const CurrentComponent = sections[currentSection];
-
     return (
-        <div className="relative overflow-hidden h-screen">
-            <AnimatePresence>
+        <>
+            {isLoading ? (
+                <div className="flex items-center justify-center h-screen bg-white">
+                    <div className="w-16 h-16 border-2 border-transparent border-t-gray-800 border-r-gray-800 rounded-full animate-spin"></div>
+                </div>
+            ) : (
                 <motion.div
-                    key={currentSection}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="absolute top-0 left-0 w-full h-full"
+                    initial={{ y: "100%", opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 1, ease: "easeInOut" }}
+                    className="relative overflow-hidden h-screen bg-gradient-hero flex justify-center w-full"
                 >
-                    <CurrentComponent />
+                    <motion.img
+                        src="/img/noise.webp"
+                        alt="Background Noise"
+                        className="absolute bottom-0 left-0 w-full h-auto z-0"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.5, duration: 1 }}
+                    />
+
+                    {!heroLoading && <HeroSection />}
                 </motion.div>
-            </AnimatePresence>
-        </div>
+            )}
+        </>
     );
 };
 
