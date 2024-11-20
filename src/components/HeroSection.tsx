@@ -32,18 +32,18 @@ export default function HeroSection() {
           </React.Fragment>
         ))}
       </h1>
-      <motion.p className="text-zinc-400 text-lg mb-8" transition={transition} variants={variants}>
-        Welcome
+      <motion.p className="text-zinc-400 text-center text-lg mb-8 w-[70%] mx-auto" transition={transition} variants={variants}>
+      I&apos;m a Full Stack Developer passionate about creating seamless user experiences, building scalable back-end systems, and delivering impactful solutions. I thrive on solving challenges and turning ideas into reality.
       </motion.p>
-      <div className="flex gap-4">
-        <motion.div transition={transition} variants={variants}>
+      <div className="flex gap-4 flex ">
+        <motion.div className="mx-auto" transition={transition} variants={variants}>
           <a className="inline-flex justify-center whitespace-nowrap rounded-lg bg-white px-3.5 py-2.5 text-sm font-medium text-zinc-800 hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#0">
-            Start Free Trial
+            Contact me
           </a>
         </motion.div>
-        <motion.div transition={transition} variants={variants}>
+        <motion.div className="mx-auto" transition={transition} variants={variants}>
           <a className="inline-flex justify-center whitespace-nowrap rounded-lg bg-transparent px-3.5 py-2.5 text-sm font-medium text-zinc-400 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#0">
-            Learn More
+            Work
           </a>
         </motion.div>
       </div>
