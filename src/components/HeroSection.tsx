@@ -9,10 +9,11 @@ const variants = {
   visible: { filter: "blur(0)", transform: "translateY(0)", opacity: 1 },
 };
 
+const icons = ["github", "linkedin", "email"]
 const text = "Ali Fertah aka scofio is online now ";
 
 export default function HeroSection() {
-  const words = text.split(" ");  
+  const words = text.toUpperCase().split(" ");  
 
   return (
     <motion.div
@@ -42,9 +43,11 @@ export default function HeroSection() {
           </a>
         </motion.div>
         <motion.div className="mx-auto" transition={transition} variants={variants}>
-          <a className="inline-flex justify-center whitespace-nowrap rounded-lg bg-transparent px-3.5 py-2.5 text-sm font-medium text-zinc-400 hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#0">
-            Work
-          </a>
+          {icons.map((icon, key) => (
+            <a key={key} className="inline-flex justify-center whitespace-nowrap rounded-lg bg-transparent px-3.5 py-2.5 text-sm font-medium hover:scale-110 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#">
+              <img  className="w-8 h-8 text-white" src={`./img/${icon}.svg`} alt="" />
+            </a>
+          ))}
         </motion.div>
       </div>
     </motion.div>
