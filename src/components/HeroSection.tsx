@@ -9,7 +9,20 @@ const variants = {
   visible: { filter: "blur(0)", transform: "translateY(0)", opacity: 1 },
 };
 
-const icons = ["github", "linkedin", "email"]
+const icons = [
+  {
+    icon: "linkedin",
+    link: "https://www.linkedin.com/in/alifertah/",
+  },
+  {
+    icon: "github",
+    link: "https://github.com/alifertah"
+  },
+  {
+    icon: "email",
+    link: "mailto:alifertah0@gmail.com"
+  }
+]
 const text = "Ali Fertah aka scofio is online now ";
 
 export default function HeroSection() {
@@ -38,14 +51,14 @@ export default function HeroSection() {
       </motion.p>
       <div className="flex gap-4 flex ">
         <motion.div className="mx-auto" transition={transition} variants={variants}>
-          <a className="inline-flex justify-center whitespace-nowrap rounded-lg bg-white px-3.5 py-2.5 text-sm font-medium text-zinc-800 hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#0">
+          <a className="inline-flex justify-center whitespace-nowrap rounded-lg bg-white px-3.5 py-2.5 text-sm font-medium text-zinc-800 hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="mailto:alifertah0@gmail.com">
             Contact me
           </a>
         </motion.div>
         <motion.div className="mx-auto" transition={transition} variants={variants}>
           {icons.map((icon, key) => (
-            <a key={key} className="inline-flex justify-center whitespace-nowrap rounded-lg bg-transparent px-3.5 py-2.5 text-sm font-medium hover:scale-110 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" href="#">
-              <img  className="w-8 h-8 text-white" src={`./img/${icon}.svg`} alt="" />
+            <a key={key} className="inline-flex justify-center whitespace-nowrap rounded-lg bg-transparent px-3.5 py-2.5 text-sm font-medium hover:scale-110 focus-visible:outline-none focus-visible:ring focus-visible:ring-zinc-700 transition-colors" target="_blank" href={icon.link}>
+              <img  className="w-8 h-8 text-white" src={`./img/${icon.icon}.svg`} alt="" />
             </a>
           ))}
         </motion.div>
